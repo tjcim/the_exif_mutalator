@@ -1,7 +1,9 @@
 language: python
 python:
   - 3.6
+  - nightly
 script:
-  - pytest
+  - coverage run --source the_exif_mutalator -m py.test
+  - coverage report -m
 after_success:
   - coveralls

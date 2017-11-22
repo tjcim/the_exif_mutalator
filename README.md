@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tjcim/the_exif_mutalator.svg?branch=master)](https://travis-ci.org/tjcim/the_exif_mutalator)
+[![Build Status](https://travis-ci.org/tjcim/the_exif_mutalator.svg?branch=master)](https://travis-ci.org/tjcim/the_exif_mutalator) [![Coverage Status](https://coveralls.io/repos/github/tjcim/the_exif_mutalator/badge.svg?branch=master)](https://coveralls.io/github/tjcim/the_exif_mutalator?branch=master)
 
 # The EXIF Mutalator
 
