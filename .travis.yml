@@ -4,3 +4,5 @@ python:
   - nightly
 script:
   - pytest
+after_success:
+  - coveralls
