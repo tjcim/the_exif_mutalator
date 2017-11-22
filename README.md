@@ -1,3 +1,5 @@
+https://travis-ci.org/tjcim/the_exif_mutalator.svg?branch=master
+
 # The EXIF Mutalator
 
 This is a tool to view, save, and or delete EXIF data from images. The project started from the November Python Study Group Challenge.
