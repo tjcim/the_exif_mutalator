@@ -1,4 +1,4 @@
-https://travis-ci.org/tjcim/the_exif_mutalator.svg?branch=master
+[![Build Status](https://travis-ci.org/tjcim/the_exif_mutalator.svg?branch=master)](https://travis-ci.org/tjcim/the_exif_mutalator)
 
 # The EXIF Mutalator
 
