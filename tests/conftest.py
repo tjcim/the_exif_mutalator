@@ -1,7 +1,14 @@
 """
 Fixtures for pytest files
 """
+import os
+import shutil
+
 import pytest
+
+
+IMAGES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "sample_images")
+
 
 @pytest.fixture
 def canon_40d_exif():
@@ -49,3 +56,19 @@ def canon_40d_exif():
         'WhiteBalance': 0, 'SceneCaptureType': 0
     }
     return exif_data
+
+
+@pytest.fixture
+def canon_40d_file(tmpdir):
+    """ Create a copy of the file for testing. """
+    shutil.copyfile(os.path.join(IMAGES, "jpg/Canon_40D.jpg"),
+                    os.path.join(tmpdir, "Canon_40D.jpg"))
+    return os.path.join(tmpdir, "Canon_40D.jpg")
+
+
+@pytest.fixture
+def image_folder(tmpdir):
+    """ Create a directory of images for testing. """
+    shutil.copytree(os.path.join(IMAGES, "jpg"),
+                    os.path.join(tmpdir, "jpg"))
+    return os.path.join(tmpdir, "jpg")

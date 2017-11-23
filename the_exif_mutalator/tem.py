@@ -2,6 +2,7 @@
 Entry point for the_exif_mutalator
 """
 import sys
+import glob
 import os.path
 import logging
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -32,7 +33,7 @@ def print_exif(image_file):
 
 
 def save_exif(image_file):
-    """ Saves exif data to same name as image_file with a .txt ending. """
+    """ Saves exif data to same name as image_file with a .json ending. """
     pass
 
 
@@ -41,18 +42,21 @@ def delete_exif(input_file, output_file, prefix=None, suffix=None):
     pass
 
 
-def main(args):
-    """ Main function. """
-    logger.info("test")
-    logger.warning("test warning")
-    logger.error("test error")
-    print(args)
-
+def create_file_list(args):
+    """ Return a list of files to process """
     is_dir = os.path.isdir(args.input)
     if is_dir:
-        logger.info("Working on all image files within the directory: {}".format(args.input))
-    else:
-        logger.info("Working on the image: {}".format(args.input))
+        os.chdir(args.input)
+        files = []
+        for filename in glob.glob("*.jpg"):
+            files.append(filename)
+        return files
+    return [args.input]
+
+
+def main(args):
+    """ Main function. """
+    pass
 
 
 if __name__ == '__main__':
