@@ -32,13 +32,23 @@ def print_exif(image_file):
     print(exif_data)
 
 
-def save_exif(image_file):
-    """ Saves exif data to same name as image_file with a .json ending. """
-    pass
+def save_exif(image_file, exif_file_name=None):
+    """ Saves exif data to same name as image_file with a .exif.txt ending. """
+    parent_dir, image_filename = os.path.split(image_file)
+    if exif_file_name:
+        txt_path = exif_file_name
+    else:
+        txt_path = os.path.join(parent_dir, image_filename + ".exif.txt")
+    exif_data = get_exif(image_file)
+    with open(txt_path, 'a') as filehandler:
+        filehandler.write("\n{0}\n{1}\n{0}\n".format("*" * 25, image_filename))
+        for key, val in exif_data.items():
+            filehandler.write("{}: {}\n".format(key, val))
+    return txt_path
 
 
-def delete_exif(input_file, output_file, prefix=None, suffix=None):
-    """ Removes exif data when saving file. """
+def save_image():
+    """ Save the image file. """
     pass
 
 

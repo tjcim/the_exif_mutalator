@@ -48,3 +48,39 @@ def test_create_file_list_directory(image_folder):
         'Konica_Minolta_DiMAGE_Z3.jpg', 'Pentax_K10D.jpg'
     ]
     assert set(res) == set(expected)
+
+
+def test_save_exif(canon_40d_file, canon_40d_exif):
+    """ Test saving exif data to txt file. """
+    filename = tem.save_exif(canon_40d_file)
+    image_filename = os.path.split(canon_40d_file)[1]
+    expected = ""
+    expected += "\n{0}\n{1}\n{0}\n".format("*" * 25, image_filename)
+    for key, value in canon_40d_exif.items():
+        expected += "{}: {}\n".format(key, value)
+    with open(filename, 'r') as filehandler:
+        res = filehandler.read()
+    assert res == expected
+
+
+def test_save_exif_multiple_files(canon_40d_file, canon_40d_exif, long_description_file, tmpdir):
+    """ Test saving multiple exif data to txt file. """
+    exif_file = os.path.join(tmpdir, "exif_data.txt")
+    ld_exif = tem.get_exif(long_description_file)
+    tem.save_exif(canon_40d_file, exif_file)
+    tem.save_exif(long_description_file, exif_file)
+    expected = ""
+
+    image_filename = os.path.split(canon_40d_file)[1]
+    expected += "\n{0}\n{1}\n{0}\n".format("*" * 25, image_filename)
+    for key, value in canon_40d_exif.items():
+        expected += "{}: {}\n".format(key, value)
+
+    image_filename = os.path.split(long_description_file)[1]
+    expected += "\n{0}\n{1}\n{0}\n".format("*" * 25, image_filename)
+    for key, value in ld_exif.items():
+        expected += "{}: {}\n".format(key, value)
+
+    with open(exif_file, 'r') as filehandler:
+        res = filehandler.read()
+    assert res == expected

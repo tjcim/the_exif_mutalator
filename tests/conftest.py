@@ -67,6 +67,14 @@ def canon_40d_file(tmpdir):
 
 
 @pytest.fixture
+def long_description_file(tmpdir):
+    """ Create a copy of the file for testing. """
+    shutil.copyfile(os.path.join(IMAGES, "jpg/long_description.jpg"),
+                    os.path.join(tmpdir, "long_description.jpg"))
+    return os.path.join(tmpdir, "long_description.jpg")
+
+
+@pytest.fixture
 def image_folder(tmpdir):
     """ Create a directory of images for testing. """
     shutil.copytree(os.path.join(IMAGES, "jpg"),
