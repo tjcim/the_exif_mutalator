@@ -47,5 +47,4 @@ def test_create_file_list_directory(image_folder):
         'long_description.jpg', 'Samsung_Digimax_i50_MP3.jpg', 'Kodak_CX7530.jpg',
         'Konica_Minolta_DiMAGE_Z3.jpg', 'Pentax_K10D.jpg'
     ]
-    expected.reverse()
-    assert res == expected
+    assert set(res) == set(expected)
