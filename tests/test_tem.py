@@ -324,12 +324,14 @@ def test_prefix_and_suffix_directory(image_folder, tmpdir):
     """ Test both suffix and prefix on a directory """
     suffix = "_no_exif"
     prefix = "no_exif_"
+    output_dir = os.path.abspath(tmpdir)
     args = cli.parse_args([
         "-i", image_folder,
+        "-o", output_dir,
         "--suffix", suffix,
         "--prefix", prefix,
     ])
     tem.main(args)
-    output_filename = os.path.join(tmpdir, "jpg/no_exif_Canon_40D_no_exif.jpg")
+    output_filename = os.path.join(tmpdir, "no_exif_Canon_40D_no_exif.jpg")
     assert os.path.isfile(output_filename)
     assert tem.get_exif(output_filename) is None

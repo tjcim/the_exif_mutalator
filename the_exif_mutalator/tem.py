@@ -91,9 +91,10 @@ def main(args):
             save_exif(image_file)
         elif args.save_exif:
             save_exif(image_file, args.save_exif)
+
         # Output options
         if args.output:
-            new_filename = args.output
+            new_filename = os.path.join(args.output, image_file)
         else:
             new_filename = image_file
         if args.prefix:
