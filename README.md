@@ -27,7 +27,7 @@ While building this project I have the following goals:
 * Save all exif data to a single file (`-s`,`--save-exif`)
 * Save exif data to individual files with same name as destination image in the same output folder
 (`-S`,`--save-exif-by-file`)
-* Delete (`-d`,`--delete-exif`) - only makes sense when no output options is used.
+* Delete (`-d`,`--delete-exif`) - only makes sense when no output option is used.
 
 You can print, save and delete exif data. The two save options are mutually exclusive.
 
