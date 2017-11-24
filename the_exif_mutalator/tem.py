@@ -54,15 +54,10 @@ def save_exif(image_file, exif_file_name=None):
     return txt_path
 
 
-def save_image(input_file, output):
+def save_image(input_file, output_file):
     """ Save the image file removing exif_data. """
-    if os.path.isdir(output):
-        _, tail = os.path.split(input_file)
-        output_file = os.path.join(output, tail)
-    else:
-        output_file = output
     img = PIL.Image.open(input_file)
-    logger.debug("Saving image: {} to {}".format(input_file, output))
+    logger.debug("Saving image: {} to {}".format(input_file, output_file))
     img.save(output_file, 'JPEG')
     return output_file
 
